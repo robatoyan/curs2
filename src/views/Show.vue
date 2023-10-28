@@ -1,6 +1,8 @@
 <script setup>
 import { userSlice } from "../stores/userSlice"
+import { useRouter } from "vue-router";
 const userData = userSlice()
+const router = useRouter()
 </script>
 
 <template>
@@ -19,8 +21,8 @@ const userData = userSlice()
                 <h2>{{ item.name }}</h2>
                 <h2>{{ item.surname }}</h2>
                 <h2>{{ item.age }}</h2>
-                <button>See</button>
-                <button>Apply</button>
+                <button @click="router.push('/See/' + item.id)">See</button>
+                <button @click="userData.apply(item.id)">Apply</button>
                 <button @click="userData.deletUser(item.id)">Delete</button>
             </div>
         </div>
